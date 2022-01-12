@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.thusee.tandemlisting.data.network.ApiService
 import com.thusee.tandemlisting.usecase.CommunityRemoteRepository
-import com.thusee.tandemlisting.util.LikeStateUtil
+import com.thusee.tandemlisting.usecase.LikeStatusRepo
 import com.thusee.tandemlisting.views.community.CommunityViewModel
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
@@ -26,7 +26,7 @@ val appModules = module {
         )
     }
 
-    single { LikeStateUtil() }
+    single { LikeStatusRepo() }
 
     single<ApiService> {
 

@@ -44,7 +44,7 @@ class CommunityActivity: AppCompatActivity(), LikeButtonClickListener {
             recyclerView.layoutManager = GridLayoutManager(this, 2)
         }
 
-        adapter = CommunityAdapter(DataDiffCallbacks, this)
+        adapter = CommunityAdapter(this, DataDiffCallbacks, this)
         recyclerView.adapter = adapter
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         ContextCompat.getDrawable(this, R.drawable.item_divider)?.let {

@@ -48,11 +48,14 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/itemReferenceCntText"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_view_text_margin_start"
             android:fontFamily="@font/nunito_semi_bold"
-            android:text="14"
+            android:text="@string/item_new"
+            android:gravity="center"
+            android:padding="2dp"
+            android:background="@drawable/reference_count_bg_shape"
             android:textColor="@color/black"
             android:textSize="@dimen/item_reference_count_text_size"
             app:layout_constraintRight_toRightOf="parent"
@@ -125,7 +128,7 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/bookMark"
+            android:id="@+id/like"
             android:layout_width="@dimen/like_image_dimension"
             android:layout_height="@dimen/like_image_dimension"
             android:scaleType="fitCenter"

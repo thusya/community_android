@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.thusee.tandemlisting.usecase.CommunityRemoteRepository
-import com.thusee.tandemlisting.util.LikeStateUtil
+import com.thusee.tandemlisting.usecase.LikeStatusRepo
 import com.thusee.tandemlisting.usecase.model.CommunityDataMapper
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.KoinComponent
@@ -16,10 +16,10 @@ import org.koin.core.inject
 class CommunityViewModel: ViewModel(), KoinComponent {
 
     private val fetchRemoteDataRepository: CommunityRemoteRepository by inject()
-    private val likeStateUtil: LikeStateUtil by inject()
+    private val likeStatusRepo: LikeStatusRepo by inject()
 
     init {
-        likeStateUtil.get()
+        likeStatusRepo.get()
     }
 
     fun fetchRemoteDataList(): Flow<PagingData<CommunityDataMapper>> {
@@ -31,12 +31,12 @@ class CommunityViewModel: ViewModel(), KoinComponent {
     }
 
     fun like(dataMapper: CommunityDataMapper) {
-        when (likeStateUtil.check(dataMapper)) {
+        when (likeStatusRepo.check(dataMapper)) {
             true -> {
-                likeStateUtil.remove(dataMapper.id)
+                likeStatusRepo.remove(dataMapper.id)
             }
             false -> {
-                likeStateUtil.add(dataMapper.id)
+                likeStatusRepo.add(dataMapper.id)
             }
         }
     }
