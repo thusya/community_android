@@ -1,4 +1,4 @@
-package com.thusee.tandemlisting.util
+package com.thusee.tandemlisting.usecase
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
@@ -7,7 +7,7 @@ import com.thusee.tandemlisting.usecase.model.CommunityDataMapper
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class LikeStateUtil: KoinComponent {
+class LikeStatusRepo: KoinComponent {
 
     private val sharedPreferences: SharedPreferences by inject()
 
@@ -23,18 +23,18 @@ class LikeStateUtil: KoinComponent {
         save()
     }
 
-    fun check(dataMapper: CommunityDataMapper): Boolean{
-        return likes.firstOrNull { dataMapper.id== it } != null
+    fun check(dataMapper: CommunityDataMapper): Boolean {
+        return likes.firstOrNull { dataMapper.id == it } != null
     }
 
-    fun save(){
+    fun save() {
         val editor = sharedPreferences.edit()
         editor.putString("Test", Gson().toJson(likes)).apply()
     }
 
-    fun get(): List<Int>{
+    fun get(): List<Int> {
         val list = sharedPreferences.getString("Test", "")
-        val type = object: TypeToken<List<Int>>(){}.type
+        val type = object: TypeToken<List<Int>>() {}.type
         likes.clear()
         likes.addAll(Gson().fromJson(list, type))
         return likes

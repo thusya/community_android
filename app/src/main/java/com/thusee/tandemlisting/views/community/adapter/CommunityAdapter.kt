@@ -1,11 +1,8 @@
 package com.thusee.tandemlisting.views.community.adapter
 
-import android.content.Context
 import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -20,7 +17,6 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class CommunityAdapter(
-    private val context: Context,
     diffCallback: DiffUtil.ItemCallback<CommunityDataMapper>,
     private val listener: LikeButtonClickListener
 ): PagingDataAdapter<CommunityDataMapper, CommunityAdapter.CommunityAdapterHolder>(diffCallback) {
@@ -29,10 +25,6 @@ class CommunityAdapter(
         val data = getItem(position)
         data?.let { item ->
             holder.bind(item)
-
-            holder.itemView.setOnClickListener {
-                listener.likeButtonClick(item)
-            }
         }
 
     }
@@ -43,12 +35,11 @@ class CommunityAdapter(
     ): CommunityAdapterHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemViewBinding.inflate(layoutInflater, parent, false)
-        return CommunityAdapterHolder(binding, context, listener)
+        return CommunityAdapterHolder(binding, listener)
     }
 
     class CommunityAdapterHolder(
         private val binding: ItemViewBinding,
-        private val context: Context,
         private val listener: LikeButtonClickListener
     ):
         RecyclerView.ViewHolder(binding.root), KoinComponent {
