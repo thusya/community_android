@@ -4,24 +4,24 @@
 This is a Listing android app with one primary feature - to list the data.
 
 # Project Configuration
-Language: Kotlin
+Language: Kotlin\
 Minimum SDK: 21
 
 # Project Structure
-app
-Activity the listing results page
+app\
+Activity the listing results page\
 ViewModel with function to fetch remote results data from Repository
 
 # Tech Stack
-Android
-MVVM
-Koin for dependency injection
-Retrofit for networking
-Moshi for json parsing
-View binding for UI layer.
-Coroutines for async tasks.
-Paging 3
-Spek 2 for unit testing
+Android\
+MVVM\
+Koin for dependency injection\
+Retrofit for networking\
+Moshi for json parsing\
+View binding for UI layer.\
+Coroutines for async tasks.\
+Paging 3\
+Spek 2 for unit testing\
 glide for image download
 
 # The way to test the Spek Unit test 
