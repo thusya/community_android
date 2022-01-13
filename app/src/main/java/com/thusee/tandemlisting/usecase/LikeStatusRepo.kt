@@ -11,7 +11,7 @@ class LikeStatusRepo: KoinComponent {
 
     private val sharedPreferences: SharedPreferences by inject()
 
-    private var likes = arrayListOf<Int>()
+    private var likes: ArrayList<Int> = arrayListOf()
 
     fun add(id: Int) {
         likes.add(id)
@@ -36,7 +36,12 @@ class LikeStatusRepo: KoinComponent {
         val list = sharedPreferences.getString("Test", "")
         val type = object: TypeToken<List<Int>>() {}.type
         likes.clear()
-        likes.addAll(Gson().fromJson(list, type))
+
+        list?.let {
+            if (it.isNotEmpty()) {
+                likes.addAll(Gson().fromJson(it, type))
+            }
+        }
         return likes
     }
 
