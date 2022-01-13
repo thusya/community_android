@@ -28,6 +28,7 @@ glide for image download
 AS 4.2 Spek plugin automatically selects Intellij compatible spek plugin as the latest and recommended.
 
 We need to install the AS version of Spek Plugin.
+A list of versions can also be found here, https://plugins.jetbrains.com/plugin/10915-spek-framework/versions for the specific version of AS.
 
 Choose install from disk option:
 
